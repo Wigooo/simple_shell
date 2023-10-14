@@ -12,12 +12,25 @@
 #include <limits.h>
 #include <errno.h>
 
+#define NORM 0
+#define OR 1
+#define AND 2
+#define CHAIN 3
+
+#define GETLINE 0
+#define STRTOK 0
+
+#define HIST_F ".simple_shell_history"
+#define HIST_M 4096
+
 #define BUFFER_FLUSH -1
 #define WRITE_BUFFER_SIZE 1024
 #define READ_BUFFER_SIZE 1024
 
 #define UNSIGNED_CONVERT 2
 #define LOWERCASE_CONVERT 1
+
+extern char **environ;
 
 /**
  * struct liststr - singly linked list
@@ -120,5 +133,12 @@ char **ls_to_str(lists *h);
 size_t print_ls(const lists *head);
 lists *starting_with_node(lists *head_node, char *pre, char c);
 ssize_t getting_node_idx(lists *h, lists *node);
+ssize_t get_ip(info *info);
+int _getline(info *info, char **ptr, size_t *length);
+void sigintHandler(__attribute__((unused))int sig_num);
+void comments_rm(char *);
+int build_history(info *info, char *buf, int linecount);
+void chain_check(info *, char *, size_t *, size_t, size_t);
+int is_chain(info_t *, char *, size_t *);
 
 #endif
