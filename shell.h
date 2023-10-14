@@ -21,7 +21,7 @@
 
 /**
  * struct liststr - singly linked list
- * @number: number field
+ * @num: number field
  * @str: string
  * @next: pointer to next node
  */
@@ -112,5 +112,8 @@ lists *node_end(lists **head, const char *str, int num);
 size_t print_list(const lists *h);
 int delete_node(lists **head, unsigned int index);
 void free_list(lists **head_p);
+void clear_information(info *info);
+void set_information(info *info, char **av);
+void free_information(info *info, int all);
 
 #endif
