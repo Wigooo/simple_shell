@@ -115,5 +115,10 @@ void free_list(lists **head_p);
 void clear_information(info *info);
 void set_information(info *info, char **av);
 void free_information(info *info, int all);
+size_t list_length(const lists *head);
+char **ls_to_str(lists *h);
+size_t print_ls(const lists *head);
+lists *starting_with_node(lists *head_node, char *pre, char c);
+ssize_t getting_node_idx(lists *h, lists *node);
 
 #endif
