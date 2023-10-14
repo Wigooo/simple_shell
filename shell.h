@@ -27,7 +27,7 @@
  */
 typedef struct liststr
 {
-	int number;
+	int num;
 	char *str;
 	struct liststr *next;
 } lists;
@@ -110,7 +110,7 @@ int _putfd(char c, int fd);
 lists *node_add(lists **head, const char *str, int num);
 lists *node_end(lists **head, const char *str, int num);
 size_t print_list(const lists *h);
-int delete_node(lits **head, unsigned int index);
+int delete_node(lists **head, unsigned int index);
 void free_list(lists **head_p);
 
 #endif
