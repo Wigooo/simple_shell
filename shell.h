@@ -107,5 +107,10 @@ int _errputchar(char c);
 void _errputs(char *str);
 int _putsfd(char *str, int fd);
 int _putfd(char c, int fd);
+lists *node_add(lists **head, const char *str, int num);
+lists *node_end(lists **head, const char *str, int num);
+size_t print_list(const lists *h);
+int delete_node(lits **head, unsigned int index);
+void free_list(lists **head_p);
 
 #endif
