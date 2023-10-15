@@ -6,16 +6,16 @@
  * @info: info
  *
  * Return: char
-*/
+ */
 
 char *get_history(info *info)
 {
 	char *x, *y;
 
-	y = _getenv(info, "HOME=");
+	y = get_env(info, "HOME=");
 	if (!y)
 		return (NULL);
-	x = malloc(sizeof(char) * (_strlen(dir) + _strlen(HIST_F) + 2));
+	x = malloc(sizeof(char) * (_strlen(y) + _strlen(HIST_F) + 2));
 	if (!x)
 		return (NULL);
 	x[0] = 0;
@@ -31,22 +31,22 @@ char *get_history(info *info)
  * @info: info
  *
  * Return: int
-*/
+ */
 
 int history_write(info *info)
 {
 	ssize_t x;
 	char *f = get_history(info);
-	list *n = NULL;
+	lists *n = NULL;
 
 	if (!f)
 		return (-1);
 
-	x = open(f, 0_CREAT | O_TRUNC | O_RDWR, 0644);
+	x = open(f, O_CREAT | O_TRUNC | O_RDWR, 0644);
 	free(f);
 	if (x == -1)
 		return (-1);
-	for (n = info->history; n = n->next)
+	for (n = info->history; n; n = n->next)
 	{
 		_putsfd(n->str, x);
 		_putfd('\n', x);
@@ -62,7 +62,7 @@ int history_write(info *info)
  * @info: info
  *
  * Return: int
-*/
+ */
 
 int history_read(info *info)
 {
@@ -79,7 +79,7 @@ int history_read(info *info)
 	if (x == -1)
 		return (0);
 	if (!fstat(x, &st))
-		s  = st.st_size;
+		s = st.st_size;
 	if (s < 2)
 		return (0);
 	b = malloc(sizeof(char) * (s + 1));
@@ -115,14 +115,15 @@ int history_read(info *info)
  * @linecount: int
  *
  * Return: int
-*/
+ */
 
 int build_history(info *info, char *buf, int linecount)
 {
-	list *n = NULL;
+	lists *n = NULL;
 
 	if (info->history)
-		n = info->linecount;
+		n = info->history;
+	node_end(&n, buf, linecount);
 
 	if (!info->history)
 		info->history = n;
@@ -135,11 +136,11 @@ int build_history(info *info, char *buf, int linecount)
  * @info: info
  *
  * Return: int
-*/
+ */
 
 int renumber_history(info *info)
 {
-	list *n = info->history;
+	lists *n = info->history;
 	int x = 0;
 
 	while (n)

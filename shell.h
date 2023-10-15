@@ -139,15 +139,22 @@ int _getline(info *info, char **ptr, size_t *length);
 void sigintHandler(__attribute__((unused)) int sig_num);
 int build_history(info *info, char *buf, int linecount);
 void chain_check(info *information,
-		char *buffer, size_t *ap, size_t start, size_t length);
+				 char *buffer, size_t *ap, size_t start, size_t length);
 int is_chain(info *information, char *buffer, size_t *ap);
 int alias_replace(info *information);
 int string_replace(char **old_str, char **new_str);
 int vars_replace(info *information);
-char *get_history(info_t *info);
-char *_getenv(info_t *, const char *);
-int history_write(info_t *info);
-int history_read(info_t *info);
-int renumber_history(info_t *info);
+char *get_history(info *info);
+int history_write(info *info);
+int history_read(info *info);
+int renumber_history(info *info);
+int current_env(info *information);
+char *get_env(info *information, const char *var);
+int myset_env(info *information);
+int myunset_env(info *information);
+int envlist_populating(info *information);
+int unset_env(info *information, char *var);
+int set_env(info *information, char *var, char *value);
+char **print_environ(info *information);
 
 #endif
