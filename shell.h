@@ -144,5 +144,10 @@ int is_chain(info *information, char *buffer, size_t *ap);
 int alias_replace(info *information);
 int string_replace(char **old_str, char **new_str);
 int vars_replace(info *information);
+char *get_history(info_t *info);
+char *_getenv(info_t *, const char *);
+int history_write(info_t *info);
+int history_read(info_t *info);
+int renumber_history(info_t *info);
 
 #endif
