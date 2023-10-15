@@ -138,7 +138,11 @@ ssize_t get_ip(info *info);
 int _getline(info *info, char **ptr, size_t *length);
 void sigintHandler(__attribute__((unused)) int sig_num);
 int build_history(info *info, char *buf, int linecount);
-void chain_check(info *, char *, size_t *, size_t, size_t);
-int is_chain(info *, char *, size_t *);
+void chain_check(info *information,
+		char *buffer, size_t *ap, size_t start, size_t length);
+int is_chain(info *information, char *buffer, size_t *ap);
+int alias_replace(info *information);
+int string_replace(char **old_str, char **new_str);
+int vars_replace(info *information);
 
 #endif
