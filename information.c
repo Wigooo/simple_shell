@@ -6,7 +6,7 @@
  * @info: info
  *
  * Return: no
-*/
+ */
 
 void clear_information(info *info)
 {
@@ -23,7 +23,7 @@ void clear_information(info *info)
  * @av: pointer
  *
  * Return: no
-*/
+ */
 
 void set_information(info *info, char **av)
 {
@@ -57,7 +57,7 @@ void set_information(info *info, char **av)
  * @all: int
  *
  * Return: no
-*/
+ */
 
 void free_information(info *info, int all)
 {
@@ -69,13 +69,13 @@ void free_information(info *info, int all)
 		if (!info->cmd_buf)
 			free(info->arg);
 		if (info->env)
-			free_list(*(info->env));
+			free_list(&(info->env));
 		if (info->history)
-			free_list(*(info->history));
+			free_list(&(info->history));
 		if (info->alias)
 			free_list(&(info->alias));
 		_free(info->environ);
-			info->environ = NULL;
+		info->environ = NULL;
 		pfree((void **)info->cmd_buf);
 		if (info->readfd > 2)
 			close(info->readfd);

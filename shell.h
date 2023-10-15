@@ -11,6 +11,7 @@
 #include <fcntl.h>
 #include <limits.h>
 #include <errno.h>
+#include <signal.h>
 
 #define NORM 0
 #define OR 1
@@ -135,10 +136,9 @@ lists *starting_with_node(lists *head_node, char *pre, char c);
 ssize_t getting_node_idx(lists *h, lists *node);
 ssize_t get_ip(info *info);
 int _getline(info *info, char **ptr, size_t *length);
-void sigintHandler(__attribute__((unused))int sig_num);
-void comments_rm(char *);
+void sigintHandler(__attribute__((unused)) int sig_num);
 int build_history(info *info, char *buf, int linecount);
 void chain_check(info *, char *, size_t *, size_t, size_t);
-int is_chain(info_t *, char *, size_t *);
+int is_chain(info *, char *, size_t *);
 
 #endif

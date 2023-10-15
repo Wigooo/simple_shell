@@ -19,7 +19,7 @@ ssize_t input_buf(info *info, char **buf, size_t *len)
 	{
 		free(*buf);
 		*buf = NULL;
-		signal(SIGINT, sigintHandler);
+		signal(SIGINT ,sigintHandler);
 #if GETLINE
 		x = getline(buf, &len_x, stdin);
 #else
@@ -33,7 +33,7 @@ ssize_t input_buf(info *info, char **buf, size_t *len)
 				x--;
 			}
 			info->linecount_flag = 1;
-			comments_rm(*buf);
+			rem_comments(*buf);
 			build_history(info, *buf, info->histcount++);
 			{
 				*len = x;
@@ -101,7 +101,7 @@ ssize_t get_ip(info *info)
  * Return: int
 */
 
-ssize_t read_buf(infop *info, char *buf, size_t *i)
+ssize_t read_buf(info *info, char *buf, size_t *i)
 {
 	ssize_t x = 0;
 
