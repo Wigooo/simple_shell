@@ -156,5 +156,13 @@ int envlist_populating(info *information);
 int unset_env(info *information, char *var);
 int set_env(info *information, char *var, char *value);
 char **print_environ(info *information);
+int own_exit(info *information);
+int own_cd(info *information);
+int own_help(info *information);
+int my_history(info *information);
+int alias_unset(info *information, char *s);
+int alias_set(info *information, char *s);
+int alias_print(lists *n);
+int own_alias(info *information);
 
 #endif
