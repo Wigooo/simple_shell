@@ -5,13 +5,13 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
-#include <sys/types.h>
-#include <sys/stat.h>
 #include <sys/wait.h>
 #include <fcntl.h>
 #include <limits.h>
 #include <errno.h>
 #include <signal.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 
 #define NORM 0
 #define OR 1
@@ -92,8 +92,19 @@ typedef struct passinfo
 } info;
 
 #define INFORM_INIT \
-{NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
-	0, 0, 0}
+	{NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
+			0, 0, 0}
+
+/**
+ * struct builtin - contains builtin string and related function
+ * @flag: command flag of builtin
+ * @function: function
+ */
+typedef struct builtin
+{
+	char *flag;
+	int (*function)(info *);
+} builtin_t;
 
 char *_starting_with(const char *haystack, const char *needle);
 char *_strcat(char *destination, char *source);
@@ -172,6 +183,9 @@ int is_cmd(info *info, char *path);
 char *dup_charct(char *pathstr, int start, int stop);
 char *find_pathing(info *info, char *pathstr, char *cmd);
 int main(int ac, char **av);
-int hsh(info_t *, char **);
+int hsh(info *information, char **av);
+int builtin_find(info *information);
+void command_find(info *information);
+void command_fork(info *information);
 
 #endif

@@ -7,17 +7,17 @@
  * @av: pointer
  *
  * Return: int
-*/
+ */
 
 int main(int ac, char **av)
 {
-	info inf[] = { INFORM_INIT };
+	info inf[] = {INFORM_INIT};
 	int x = 2;
 
-	asm ("mov %1, %0\n\t"
-			"add $3, %0"
-			: "=r" (x)
-			: "r" (x));
+	asm("mov %1, %0\n\t"
+		"add $3, %0"
+		: "=r"(x)
+		: "r"(x));
 
 	if (ac == 2)
 	{
@@ -37,10 +37,10 @@ int main(int ac, char **av)
 			}
 			return (EXIT_FAILURE);
 		}
-		info->readfd = x;
+		inf->readfd = x;
 	}
-	envlist_populating(info);
-	history_read(info);
-	hsh(info, av);
+	envlist_populating(inf);
+	history_read(inf);
+	hsh(inf, av);
 	return (EXIT_SUCCESS);
 }
