@@ -63,7 +63,7 @@ char *find_pathing(info *info, char *pathstr, char *cmd)
 
 	if (!pathstr)
 		return (NULL);
-	if ((_strlen(cmd) > 2) && starting_with(cmd. "./"))
+	if ((_strlen(cmd) > 2) && starting_with(cmd, "./"))
 	{
 		if (is_cmd(info, cmd))
 			return (cmd);

@@ -91,6 +91,10 @@ typedef struct passinfo
 	int histcount;
 } info;
 
+#define INFORM_INIT \
+{NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
+	0, 0, 0}
+
 char *_starting_with(const char *haystack, const char *needle);
 char *_strcat(char *destination, char *source);
 int _strcmp(char *str1, char *str2);
@@ -167,5 +171,7 @@ int own_alias(info *information);
 int is_cmd(info *info, char *path);
 char *dup_charct(char *pathstr, int start, int stop);
 char *find_pathing(info *info, char *pathstr, char *cmd);
+int main(int ac, char **av);
+int hsh(info_t *, char **);
 
 #endif
