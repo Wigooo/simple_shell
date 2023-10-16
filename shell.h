@@ -164,5 +164,8 @@ int alias_unset(info *information, char *s);
 int alias_set(info *information, char *s);
 int alias_print(lists *n);
 int own_alias(info *information);
+int is_cmd(info *info, char *path);
+char *dup_charct(char *pathstr, int start, int stop);
+char *find_pathing(info *info, char *pathstr, char *cmd);
 
 #endif
