@@ -52,13 +52,13 @@ void rem_comments(char *buffer)
  */
 void print_err(info *info, char *err_str)
 {
-	_eputs(info->fname);
-	_eputs(": ");
-	print_d(info->line_count, STDERR_FILENO);
-	_eputs(": ");
-	_eputs(info->argv[0]);
-	_eputs(": ");
-	_eputs(err_str);
+	_errputs(info->fname);
+	_errputs(": ");
+	print_decimal(info->line_count, STDERR_FILENO);
+	_errputs(": ");
+	_errputs(info->argv[0]);
+	_errputs(": ");
+	_errputs(err_str);
 }
 
 /**

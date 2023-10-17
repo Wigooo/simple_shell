@@ -11,10 +11,10 @@
 
 int main(int ac, char **av)
 {
-	info inf[] = {INFORM_INIT};
+	info inf[] = { INFO_INIT };
 	int x = 2;
 
-	asm("mov %1, %0\n\t"
+	asm ("mov %1, %0\n\t"
 		"add $3, %0"
 		: "=r"(x)
 		: "r"(x));

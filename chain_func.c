@@ -98,7 +98,7 @@ int alias_replace(info *information)
  * @new_str: new string
  * Return: 1 if replaced, 0 otherwise
  */
-int string_replace(char **old_str, char **new_str)
+int string_replace(char **old_str, char *new_str)
 {
 	free(*old_str);
 	*old_str = new_str;
@@ -128,7 +128,7 @@ int vars_replace(info *information)
 		if (!_strcmp(information->argv[i], "$$"))
 		{
 			string_replace(&(information->argv[i]),
-					_strdup(number_convert(get_pid(), 10, 0)));
+					_strdup(number_convert(getpid(), 10, 0)));
 			continue;
 		}
 		node = starting_with_node(information->env, &information->argv[i][1], '=');

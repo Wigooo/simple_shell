@@ -7,7 +7,7 @@
  * Return: pointer to memo area
  */
 
-char *_strchr(char *str, char *c)
+char *_strchr(char *str, char c)
 {
 	do {
 		if (*str == c)
@@ -22,7 +22,7 @@ char *_strchr(char *str, char *c)
  * @del: delimeter
  * Return: pointer to array of strings, NULL if failure
  */
-char **strtow(char *str, char del)
+char **strtow(char *str, char *del)
 {
 	int x, y, z, j, words_number = 0;
 	char **s;

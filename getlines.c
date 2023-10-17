@@ -57,7 +57,7 @@ ssize_t get_ip(info *info)
 	static char *buf;
 	static size_t i, j, len;
 	ssize_t x = 0;
-	char **buf_x = *(info->arg), *p;
+	char **buf_x = &(info->arg), *p;
 
 	_putchar(BUFFER_FLUSH);
 	x = input_buf(info, &buf, &len);
@@ -123,7 +123,7 @@ ssize_t read_buf(info *info, char *buf, size_t *i)
  * Return: int
 */
 
-int _getline(info *info, char **ptr, size_t *length)
+int _getline(info *info, char **ptr, ssize_t *length)
 {
 	static char buf[READ_BUFFER_SIZE];
 	static size_t i, len;

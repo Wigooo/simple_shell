@@ -91,9 +91,12 @@ typedef struct passinfo
 	int histcount;
 } info;
 
-#define INFORM_INIT \
-	{NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
-			0, 0, 0}
+#define INFO_INIT  \
+	{          \
+		NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL,\
+		NULL, NULL, 0, 0, NULL, \
+			0, 0, 0     \
+	}
 
 /**
  * struct builtin - contains builtin string and related function
@@ -110,16 +113,16 @@ char *_starting_with(const char *haystack, const char *needle);
 char *_strcat(char *destination, char *source);
 int _strcmp(char *str1, char *str2);
 int _strlen(char *str);
-int _putchar(char *c);
+int _putchar(char c);
 void _puts(char *s);
 char *_strdup(const char *s);
 char *_strcpy(char *destination, char *source);
 char *_strncpy(char *destination, char *source, int n);
 char *_strncat(char *destination, char *source, int n);
-char *_strchr(char *str, char *c);
-char **strtow(char *str, char del);
+char *_strchr(char *str, char c);
+char **strtow(char *str, char *del);
 char **strtow2(char *str, char del);
-char *_memset(char *memo_ptr, char *bytes, unsigned int n);
+char *_memset(char *memo_ptr, char bytes, unsigned int n);
 void _free(char **ss);
 void *_realloc(void *pointer, unsigned int old_size, unsigned int new_size);
 int pfree(void **pointer);
@@ -150,14 +153,14 @@ size_t print_ls(const lists *head);
 lists *starting_with_node(lists *head_node, char *pre, char c);
 ssize_t getting_node_idx(lists *h, lists *node);
 ssize_t get_ip(info *info);
-int _getline(info *info, char **ptr, size_t *length);
+int _getline(info *info, char **ptr, ssize_t *length);
 void sigintHandler(__attribute__((unused)) int sig_num);
 int build_history(info *info, char *buf, int linecount);
 void chain_check(info *information,
 				 char *buffer, size_t *ap, size_t start, size_t length);
 int is_chain(info *information, char *buffer, size_t *ap);
 int alias_replace(info *information);
-int string_replace(char **old_str, char **new_str);
+int string_replace(char **old_str, char *new_str);
 int vars_replace(info *information);
 char *get_history(info *info);
 int history_write(info *info);

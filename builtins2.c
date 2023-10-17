@@ -105,7 +105,7 @@ int own_alias(info *information)
 		if (ptr)
 			alias_set(information, information->argv[i]);
 		else
-			alias_print(node_starts_with(information->alias,
+			alias_print(starting_with_node(information->alias,
 						information->argv[i], '='));
 	}
 

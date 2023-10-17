@@ -51,7 +51,7 @@ int set_env(info *information, char *var, char *value)
 	if (!buffer)
 		return (1);
 	_strcpy(buffer, var);
-	_strcat(buffer, '=');
+	_strcat(buffer, "=");
 	_strcat(buffer, value);
 	n = information->env;
 

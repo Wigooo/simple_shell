@@ -34,7 +34,7 @@ int own_exit(info *information)
  */
 int own_cd(info *information)
 {
-	char *buffer, *directory, *s;
+	char buffer[1024], *directory, *s;
 	int change_directory_ret;
 
 	s = getcwd(buffer, 1024);
@@ -59,7 +59,7 @@ int own_cd(info *information)
 		}
 		_puts(get_env(information, "OLDPWD=")), _putchar('\n');
 		change_directory_ret =
-			chdir((directory = get_env(information, "OLDPWD=")) ? directory : '/');
+			chdir((directory = get_env(information, "OLDPWD=")) ? directory : "/");
 	}
 	else
 		change_directory_ret = chdir(information->argv[1]);

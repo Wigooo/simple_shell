@@ -8,7 +8,7 @@
  * Return: memo_ptr pointer to memo area
  */
 
-char *_memset(char *memo_ptr, char *bytes, unsigned int n)
+char *_memset(char *memo_ptr, char bytes, unsigned int n)
 {
 	unsigned int i;
 

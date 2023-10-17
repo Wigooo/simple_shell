@@ -5,7 +5,7 @@
  * @c: character be printed
  * Return: 1 on Success, -1 when Error or otherwise.
  */
-int _putchar(char *c)
+int _putchar(char c)
 {
 	static int i;
 	static char buffer[WRITE_BUFFER_SIZE];

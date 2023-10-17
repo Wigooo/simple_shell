@@ -64,7 +64,7 @@ size_t print_ls(const lists *head)
 	while (head)
 	{
 		_puts(number_convert(head->num, 10, 0));
-		_putchar(":");
+		_putchar(':');
 		_putchar(' ');
 		_puts(head->str ? head->str : "(nil)");
 		_puts("\n");
