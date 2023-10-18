@@ -10,7 +10,7 @@
  * Return: void
  */
 void chain_check(info *information,
-		char *buffer, size_t *ap, size_t start, size_t length)
+				 char *buffer, size_t *ap, size_t start, size_t length)
 {
 	size_t x = *ap;
 
@@ -87,6 +87,9 @@ int alias_replace(info *information)
 		ap = _strchr(node->str, '=');
 		if (!ap)
 			return (0);
+		ap = _strdup(ap + 1);
+		if (!ap)
+			return (0);
 		information->argv[0] = ap;
 	}
 	return (1);
@@ -122,20 +125,20 @@ int vars_replace(info *information)
 		if (!_strcmp(information->argv[i], "$?"))
 		{
 			string_replace(&(information->argv[i]),
-					_strdup(number_convert(information->status, 10, 0)));
+						   _strdup(number_convert(information->status, 10, 0)));
 			continue;
 		}
 		if (!_strcmp(information->argv[i], "$$"))
 		{
 			string_replace(&(information->argv[i]),
-					_strdup(number_convert(getpid(), 10, 0)));
+						   _strdup(number_convert(getpid(), 10, 0)));
 			continue;
 		}
 		node = starting_with_node(information->env, &information->argv[i][1], '=');
 		if (node)
 		{
 			string_replace(&(information->argv[i]),
-					_strdup(_strchr(node->str, '=') + 1));
+						   _strdup(_strchr(node->str, '=') + 1));
 			continue;
 		}
 		string_replace(&information->argv[i], _strdup(""));

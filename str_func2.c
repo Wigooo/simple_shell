@@ -7,7 +7,7 @@
  */
 void _puts(char *s)
 {
-	unsigned int i = 0;
+	int i = 0;
 
 	if (!s)
 	{
@@ -118,6 +118,8 @@ char *_strncat(char *destination, char *source, int n)
 	i = 0;
 	j = 0;
 
+	while (destination[i] != '\0')
+		i++;
 	while (source[j] != '\0' && j < n)
 	{
 		destination[i] = source[j];

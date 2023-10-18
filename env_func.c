@@ -42,7 +42,7 @@ int myset_env(info *information)
 {
 	if (information->argc != 3)
 	{
-		_errputs("Incorrect number of arguments\n");
+		_errputs("Incorrect number of arguements\n");
 		return (1);
 	}
 	if (set_env(information, information->argv[1], information->argv[2]))
@@ -61,7 +61,7 @@ int myunset_env(info *information)
 
 	if (information->argc == 1)
 	{
-		_errputs("Too few arguments.\n");
+		_errputs("Too few arguements.\n");
 		return (1);
 	}
 	for (i = 1; i <= information->argc; i++)
