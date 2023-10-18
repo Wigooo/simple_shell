@@ -30,11 +30,11 @@ int _putchar(char c)
 
 int _strlen(char *str)
 {
-	unsigned int i = 0;
+	int i = 0;
 
 	if (!str)
 		return (0);
-	while (str[i])
+	while (*str++)
 	{
 		i++;
 	}

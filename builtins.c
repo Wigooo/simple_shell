@@ -86,7 +86,7 @@ int own_help(info *information)
 	char **args_arr;
 
 	args_arr = information->argv;
-	_puts("help call works. Function not yet implemented\n");
+	_puts("help call works. Function not yet implemented \n");
 	if (0)
 		_puts(*args_arr);
 	return (0);

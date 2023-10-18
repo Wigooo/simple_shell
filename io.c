@@ -66,7 +66,7 @@ int history_write(info *info)
 
 int history_read(info *info)
 {
-	int i, l, line = 0;
+	int i, l = 0, line = 0;
 	ssize_t x, rd, s = 0;
 	struct stat st;
 	char *b = NULL, *f = get_history(info);
